@@ -1,0 +1,38 @@
+{
+    "name": "hashemirafsan/too-mailable",
+    "description": "A Laravel based package for sending email with dynamic credentials and transport in runtime!",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hashemirafsan\\TooMailable\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hashemi Rafsan",
+            "email": "rafsanhashemi@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/mail": "10.x-dev",
+        "symfony/sendinblue-mailer": "6.2.x-dev",
+        "illuminate/support": "10.x-dev",
+        "symfony/amazon-mailer": "6.2.x-dev",
+        "symfony/google-mailer": "6.2.x-dev",
+        "symfony/mailchimp-mailer": "6.2.x-dev",
+        "symfony/mailgun-mailer": "6.2.x-dev",
+        "symfony/mailjet-mailer": "6.2.x-dev",
+        "symfony/postmark-mailer": "6.2.x-dev",
+        "symfony/sendgrid-mailer": "6.2.x-dev",
+        "symfony/oh-my-smtp-mailer": "6.2.x-dev"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hashemirafsan\\TooMailable\\TooMailableServiceProvider"
+            ]
+        }
+    }
+}
