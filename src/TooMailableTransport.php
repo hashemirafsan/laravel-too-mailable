@@ -4,13 +4,9 @@ namespace Hashemirafsan\TooMailable;
 
 use Error;
 use Illuminate\Support\Arr;
-use Symfony\Component\Mailer\Bridge\Amazon\Transport\SesSmtpTransport;
-use Symfony\Component\Mailer\Bridge\Google\Transport\GmailSmtpTransport;
-use Symfony\Component\Mailer\Bridge\Mailchimp\Transport\MandrillSmtpTransport;
-use Symfony\Component\Mailer\Bridge\Mailgun\Transport\MailgunSmtpTransport;
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 
-class TooMailTransport extends Transport
+class TooMailableTransport
 {
     protected EsmtpTransport $transport;
     protected array $credentials;
@@ -28,6 +24,11 @@ class TooMailTransport extends Transport
         return $this;
     }
 
+    public function getTransport(): EsmtpTransport
+    {
+        return $this->transport;
+    }
+
     public function setCredentials(array $credentials)
     {
         $this->credentials = $credentials;
@@ -35,60 +36,16 @@ class TooMailTransport extends Transport
         return $this;
     }
 
-    protected function buildTransport(string|EsmtpTransport $transport)
+    protected function buildTransport(string|EsmtpTransport $transport): EsmtpTransport
     {
         if ($transport instanceof EsmtpTransport) return $transport;
 
-        if (! Arr::has(config('too-mailable.accepted_transport'), $transport)) {
+        if (! Arr::has(array_keys(config('too-mailable.transports')), $transport)) {
             throw new Error("$transport is not acceptable by this package!");
         }
 
-        return Arr::get($this->mapTransport(), $this->transport);
-    }
+        $transport = config('too-mailable.transports.' . $transport);
 
-    public function getTransport(): EsmtpTransport
-    {
-        return $this->transport;
-    }
-
-    private function mapTransport(): array
-    {
-        return [
-            'amazon' => $this->amazonTransport()
-        ];
-    }
-
-    private function amazonTransport(): EsmtpTransport
-    {
-        $username = Arr::get($this->credentials, 'username', '');
-        $password = Arr::get($this->credentials, 'password', '');
-        $region = Arr::get($this->credentials, 'region', null);
-
-        return new SesSmtpTransport($username, $password, $region);
-    }
-
-    public function googleTransport(): EsmtpTransport
-    {
-        $username = Arr::get($this->credentials, 'username', '');
-        $password = Arr::get($this->credentials, 'password', '');
-
-        return new GmailSmtpTransport($username, $password);
-    }
-
-    public function mailchimpTransport(): EsmtpTransport
-    {
-        $username = Arr::get($this->credentials, 'username', '');
-        $password = Arr::get($this->credentials, 'password', '');
-
-        return new MandrillSmtpTransport($username, $password);
-    }
-
-    public function mailgunTransport(): EsmtpTransport
-    {
-        $username = Arr::get($this->credentials, 'username', '');
-        $password = Arr::get($this->credentials, 'password', '');
-        $region = Arr::get($this->credentials, 'region', null);
-
-        return new MailgunSmtpTransport($username, $password, $region);
+        return (new $transport($this->credentials))->build();
     }
 }
