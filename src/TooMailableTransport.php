@@ -7,25 +7,25 @@ use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 
 class TooMailableTransport
 {
-    protected EsmtpTransport $transport;
+    protected string|EsmtpTransport $transport;
     protected array $credentials = [];
 
     public function __construct(string|EsmtpTransport $transport, array $credentials = [])
     {
+        $this->transport = $transport;
         $this->credentials = $credentials;
-        $this->transport = $this->buildTransport($transport);
     }
 
     public function setTransport(string|EsmtpTransport $transport)
     {
-        $this->transport = $this->buildTransport($transport);
+        $this->transport = $transport;
 
         return $this;
     }
 
     public function getTransport(): EsmtpTransport
     {
-        return $this->transport;
+        return $this->buildTransport();
     }
 
     public function setCredentials(array $credentials)
@@ -35,15 +35,15 @@ class TooMailableTransport
         return $this;
     }
 
-    protected function buildTransport(string|EsmtpTransport $transport): EsmtpTransport
+    protected function buildTransport(): EsmtpTransport
     {
-        if ($transport instanceof EsmtpTransport) return $transport;
+        if ($this->transport instanceof EsmtpTransport) return $this->transport;
 
-        if (! array_key_exists($transport, config('too-mailable.transports'))) {
-            throw new Error("$transport is not acceptable by this package!");
+        if (! array_key_exists($this->transport, config('too-mailable.transports'))) {
+            throw new Error("$this->transport is not acceptable by this package!");
         }
 
-        $transport = config('too-mailable.transports.' . $transport);
+        $transport = config('too-mailable.transports.' . $this->transport);
 
         return (new $transport($this->credentials))->build();
     }
