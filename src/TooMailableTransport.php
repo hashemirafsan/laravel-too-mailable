@@ -3,18 +3,17 @@
 namespace Hashemirafsan\TooMailable;
 
 use Error;
-use Illuminate\Support\Arr;
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 
 class TooMailableTransport
 {
     protected EsmtpTransport $transport;
-    protected array $credentials;
+    protected array $credentials = [];
 
     public function __construct(string|EsmtpTransport $transport, array $credentials = [])
     {
-        $this->transport = $this->buildTransport($transport);
         $this->credentials = $credentials;
+        $this->transport = $this->buildTransport($transport);
     }
 
     public function setTransport(string|EsmtpTransport $transport)
@@ -40,7 +39,7 @@ class TooMailableTransport
     {
         if ($transport instanceof EsmtpTransport) return $transport;
 
-        if (! Arr::has(array_keys(config('too-mailable.transports')), $transport)) {
+        if (! array_key_exists($transport, config('too-mailable.transports'))) {
             throw new Error("$transport is not acceptable by this package!");
         }
 

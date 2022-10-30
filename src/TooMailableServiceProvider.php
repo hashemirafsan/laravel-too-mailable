@@ -1,6 +1,6 @@
 <?php
 
-namespace Hashemirafsan\TooMail;
+namespace Hashemirafsan\TooMailable;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -10,7 +10,7 @@ class TooMailableServiceProvider extends ServiceProvider
     {
         $this->setupConfig();
     }
-    
+
     protected function setupConfig()
     {
         $source = realpath(__DIR__.'/../config/too-mailable.php');

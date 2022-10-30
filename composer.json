@@ -16,17 +16,15 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "illuminate/mail": "10.x-dev",
-        "symfony/sendinblue-mailer": "6.2.x-dev",
-        "illuminate/support": "10.x-dev",
-        "symfony/amazon-mailer": "6.2.x-dev",
-        "symfony/google-mailer": "6.2.x-dev",
-        "symfony/mailchimp-mailer": "6.2.x-dev",
-        "symfony/mailgun-mailer": "6.2.x-dev",
-        "symfony/mailjet-mailer": "6.2.x-dev",
-        "symfony/postmark-mailer": "6.2.x-dev",
-        "symfony/sendgrid-mailer": "6.2.x-dev",
-        "symfony/oh-my-smtp-mailer": "6.2.x-dev"
+        "symfony/sendinblue-mailer": "^6.1.0",
+        "symfony/amazon-mailer": "^6.1.0",
+        "symfony/google-mailer": "^6.1.0",
+        "symfony/mailchimp-mailer": "^6.1.0",
+        "symfony/mailgun-mailer": "^6.1.0",
+        "symfony/mailjet-mailer": "^6.1.0",
+        "symfony/postmark-mailer": "^6.1.0",
+        "symfony/sendgrid-mailer": "^6.1.0",
+        "symfony/oh-my-smtp-mailer": "^6.1.0"
     },
     "extra": {
         "laravel": {
