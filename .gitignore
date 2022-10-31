@@ -6,3 +6,4 @@
 composer.lock
 .phplint-cache
 build/*
+.phpunit.*

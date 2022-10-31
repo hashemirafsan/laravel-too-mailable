@@ -24,7 +24,8 @@
         "symfony/mailjet-mailer": "^6.1.0",
         "symfony/postmark-mailer": "^6.1.0",
         "symfony/sendgrid-mailer": "^6.1.0",
-        "symfony/oh-my-smtp-mailer": "^6.1.0"
+        "symfony/oh-my-smtp-mailer": "^6.1.0",
+        "hashemi/valideto": "dev-master"
     },
     "extra": {
         "laravel": {
@@ -34,6 +35,8 @@
         }
     },
     "require-dev": {
-        "overtrue/phplint": "8.1.x-dev"
+        "overtrue/phplint": "8.1.x-dev",
+        "phpunit/phpunit": "10.0.x-dev",
+        "symfony/var-dumper": "6.2.x-dev"
     }
 }
