@@ -32,5 +32,8 @@
                 "Hashemirafsan\\TooMailable\\TooMailableServiceProvider"
             ]
         }
+    },
+    "require-dev": {
+        "overtrue/phplint": "8.1.x-dev"
     }
 }

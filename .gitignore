@@ -4,3 +4,5 @@
 .idea
 .env
 composer.lock
+.phplint-cache
+build/*
