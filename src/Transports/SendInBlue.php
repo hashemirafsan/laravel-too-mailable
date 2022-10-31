@@ -1,8 +1,8 @@
 <?php 
 
-namespace Hashemirafsan\TooMailable\Transports;
+namespace Hashemi\TooMailable\Transports;
 
-use Hashemirafsan\TooMailable\Interfaces\TransportInterface;
+use Hashemi\TooMailable\Interfaces\TransportInterface;
 use Symfony\Component\Mailer\Bridge\Sendinblue\Transport\SendinblueSmtpTransport;
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 

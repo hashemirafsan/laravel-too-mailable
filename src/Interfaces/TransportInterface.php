@@ -1,6 +1,6 @@
 <?php
 
-namespace Hashemirafsan\TooMailable\Interfaces;
+namespace Hashemi\TooMailable\Interfaces;
 
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 

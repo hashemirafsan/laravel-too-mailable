@@ -1,10 +1,10 @@
 <?php 
 
-namespace Hashemirafsan\TooMailable\Transports;
+namespace Hashemi\TooMailable\Transports;
 
 use Exception;
 use Hashemi\Valideto\Valideto;
-use Hashemirafsan\TooMailable\Interfaces\TransportInterface;
+use Hashemi\TooMailable\Interfaces\TransportInterface;
 use Symfony\Component\Mailer\Bridge\Amazon\Transport\SesSmtpTransport;
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 

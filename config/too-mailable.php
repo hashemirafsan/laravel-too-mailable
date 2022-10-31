@@ -1,6 +1,6 @@
 <?php
 
-use Hashemirafsan\TooMailable\Transports\{
+use Hashemi\TooMailable\Transports\{
     Amazon, Google, Mailchimp, Mailgun, Mailjet, 
     OhMySmtp, Postmark, Sendgrid, SendInBlue
 };

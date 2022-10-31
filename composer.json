@@ -1,11 +1,11 @@
 {
-    "name": "hashemirafsan/too-mailable",
+    "name": "hashemi/too-mailable",
     "description": "A Laravel based package for sending email with dynamic credentials and transport in runtime!",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Hashemirafsan\\TooMailable\\": "src/"
+            "Hashemi\\TooMailable\\": "src/"
         }
     },
     "authors": [
@@ -30,7 +30,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Hashemirafsan\\TooMailable\\TooMailableServiceProvider"
+                "Hashemi\\TooMailable\\TooMailableServiceProvider"
             ]
         }
     },

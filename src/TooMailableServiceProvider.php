@@ -1,6 +1,6 @@
 <?php
 
-namespace Hashemirafsan\TooMailable;
+namespace Hashemi\TooMailable;
 
 use Illuminate\Support\ServiceProvider;
 

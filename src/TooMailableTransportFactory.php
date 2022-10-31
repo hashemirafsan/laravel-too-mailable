@@ -1,9 +1,9 @@
 <?php
 
-namespace Hashemirafsan\TooMailable;
+namespace Hashemi\TooMailable;
 
 use Error;
-use Hashemirafsan\TooMailable\Interfaces\TransportInterface;
+use Hashemi\TooMailable\Interfaces\TransportInterface;
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 
 class TooMailableTransportFactory

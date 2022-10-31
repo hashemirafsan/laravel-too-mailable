@@ -1,10 +1,10 @@
 <?php
 
-namespace Hashemirafsan\TooMailable\Test;
+namespace Hashemi\TooMailable\Test;
 
 use Exception;
-use Hashemirafsan\TooMailable\Interfaces\TransportInterface;
-use Hashemirafsan\TooMailable\Transports\Amazon;
+use Hashemi\TooMailable\Interfaces\TransportInterface;
+use Hashemi\TooMailable\Transports\Amazon;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Mailer\Bridge\Amazon\Transport\SesSmtpTransport;
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
