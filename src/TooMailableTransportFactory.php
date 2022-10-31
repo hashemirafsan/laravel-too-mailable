@@ -2,7 +2,7 @@
 
 namespace Hashemi\TooMailable;
 
-use Error;
+use Exception;
 use Hashemi\TooMailable\Interfaces\TransportInterface;
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 
@@ -41,13 +41,13 @@ class TooMailableTransportFactory
         if ($this->transport instanceof EsmtpTransport) return $this->transport;
 
         if (! array_key_exists($this->transport, config('too-mailable.transports'))) {
-            throw new Error("$this->transport is not supported by this package!");
+            throw new Exception("$this->transport is not supported by this package!");
         }
 
         $transport = config('too-mailable.transports.' . $this->transport);
 
         if (! ($transport instanceof TransportInterface)) {
-            throw new Error("$transport is not acceptable by this package!");
+            throw new Exception("$transport is not acceptable by this package!");
         }
 
         return (new $transport($this->credentials))->build();
