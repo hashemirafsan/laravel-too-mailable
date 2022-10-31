@@ -2,13 +2,11 @@
 
 namespace Hashemi\TooMailable\Transports;
 
-use Exception;
-use Hashemi\Valideto\Valideto;
 use Hashemi\TooMailable\Interfaces\TransportInterface;
 use Symfony\Component\Mailer\Bridge\Amazon\Transport\SesSmtpTransport;
 use Symfony\Component\Mailer\Transport\Smtp\EsmtpTransport;
 
-class Amazon implements TransportInterface
+class Amazon extends AbstractTransport implements TransportInterface
 {
     protected string $username;
     protected string $password;
@@ -23,19 +21,13 @@ class Amazon implements TransportInterface
         $this->region = $credentials['region'] ?? null;
     }
 
-    public function validate(array $credentials)
+    public function credentialRules(): array
     {
-        $validator = new Valideto($credentials, [
+        return [
             'username' => ['required', 'string'],
             'password' => ['required', 'string'],
             'region' => ['nullable', 'string'],
-        ]);
-
-        $validator->validate();
-
-        if ($validator->fails()) {
-            throw new Exception("Credentials mismatched!");
-        }
+        ];
     }
 
     public function build(): EsmtpTransport
