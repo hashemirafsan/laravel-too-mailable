@@ -44,12 +44,14 @@ class TooMailableTransportFactory
             throw new Exception("$this->transport is not supported by this package!");
         }
 
-        $transport = config('too-mailable.transports.' . $this->transport);
+        $transportNamespace = config('too-mailable.transports.' . $this->transport);
+        
+        $transport = (new $transportNamespace($this->credentials));
 
         if (! ($transport instanceof TransportInterface)) {
             throw new Exception("$transport is not acceptable by this package!");
         }
 
-        return (new $transport($this->credentials))->build();
+        return $transport->build();
     }
 }

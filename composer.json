@@ -36,7 +36,13 @@
     },
     "require-dev": {
         "overtrue/phplint": "8.1.x-dev",
-        "phpunit/phpunit": "10.0.x-dev",
-        "symfony/var-dumper": "6.2.x-dev"
+        "symfony/var-dumper": "6.2.x-dev",
+        "phpunit/phpunit": "^9.5.10",
+        "orchestra/testbench": "8.0.x-dev"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php ./vendor/bin/testbench package:discover --ansi"
+        ]
     }
 }
