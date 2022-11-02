@@ -44,3 +44,51 @@ class SendVerificatioMail extends TooMailable
         ];
     }
 }
+```
+This package is also contain a config where each built-in transport class is configured. If anyone needs to override that transport they can easily do it by publish config from vendor. Config file will be stored in `config/too-mailable.php` on your application.
+
+Example:
+```php
+use Hashemi\TooMailable\Transports\{
+    Amazon, Google, Mailchimp, Mailgun, Mailjet, 
+    OhMySmtp, Postmark, Sendgrid, SendInBlue
+};
+
+return [
+    'transports' => [
+        'amazon' => Amazon::class,
+        'google' => Google::class,
+        'mailchimp' => Mailchimp::class,
+        'mailgun' => Mailgun::class,
+        'mailjet' => Mailjet::class,
+        'postmark' => Postmark::class,
+        'sendgrid' => Sendgrid::class,
+        'sendinblue' => SendInBlue::class,
+        'oh-my-smtp' => OhMySmtp::class,
+    ],
+];
+``` 
+So if you want to change exists transport then,
+
+```php
+return [
+    'transports' => [
+        //...
+        'amazon' => MyNewAmazonTransport::class,
+    ],
+];
+```
+Or, if you want to add new transport then,
+
+```php
+return [
+    'transports' => [
+        //...
+        'converkit' => MyNewConvertKit::class
+    ],
+];
+```
+But `MyNewConvertKit` class should be implements `Hashemi\TooMailable\Interfaces\TransportInterface` interface. Credentials will be passed through `__construct` function of `MyNewConvertKit` class.  
+
+## Contributing
+Pull requests are welcome. For any changes, please open an issue first to discuss what you would like to change.
