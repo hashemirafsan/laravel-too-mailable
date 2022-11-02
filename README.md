@@ -1,6 +1,6 @@
 # Laravel Too Mailable
 
-A Laravel based package for changing `Mail` transport and it's credentials from application layer in runtime. Simple and easy abstraction `Mailable` layer will be provided with this package.
+A Laravel based package for changing `Mail` transport and it's credentials from application layer in runtime. Simple and easy abstraction `Mailable` layer will be provided with this package. Currently this package support only SMTP.
 
 ## Installation
 You can start it from composer. Go to your terminal and run this command from your project root directory.

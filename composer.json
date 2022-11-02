@@ -1,8 +1,14 @@
 {
     "name": "hashemi/too-mailable",
-    "description": "A Laravel based package for sending email with dynamic credentials and transport in runtime!",
+    "description": "A Laravel based package for changing `Mail` transport and it's credentials from application layer in runtime. Simple and easy abstraction `Mailable` layer will be provided with this package. Currently this package support only SMTP",
     "type": "library",
     "license": "MIT",
+    "keywords": [
+        "mailable",
+        "laravel-mail",
+        "laravel-mailable",
+        "laravel-package"
+    ],
     "autoload": {
         "psr-4": {
             "Hashemi\\TooMailable\\": "src/"
