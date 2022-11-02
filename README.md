@@ -12,3 +12,35 @@ composer require hashemi/laravel-too-mailable
 ```php
 Hashemi\TooMailable\TooMailableServiceProvider::class
 ```
+## Usage
+This package will be provide `TooMailable` abstract class and you need to use your mail class. This abstract class has two abstract method.
+
+- `transport(): string|EsmtpTransport`
+This method will be return package supported transport by string or custom transport class which will be `EsmtpTransport` inherited.
+
+- `credentials(): array`
+This method will be return necessary credentials of current transport.
+
+Example:
+
+```php
+use Hashemi\TooMailable\TooMailable;
+
+class SendVerificatioMail extends TooMailable
+{
+    //... 
+
+    public function transport()
+    {
+        return 'amazon';
+    }
+
+    public function credentials()
+    {
+        return [
+            'username' => 'my-user',
+            'password' => 'password-123',
+            'region' => 'us-east-2'
+        ];
+    }
+}
